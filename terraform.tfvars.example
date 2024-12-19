@@ -1,0 +1,6 @@
+# Access Token
+token = ""
+
+# Ubuntu Default User
+username = "ubuntu"
+password = "password"
