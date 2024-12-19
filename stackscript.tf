@@ -18,6 +18,8 @@ if [ "$USERNAME" ] && [ "$PASSWORD" ] && [ "$PUBLICKEY" ]; then
     user_add_pubkey "$USERNAME" "$PUBLICKEY"
     
     ssh_disable_root
+
+    enable_passwordless_sudo "$USERNAME"
 fi
 EOF
   images      = ["any/all"]

@@ -33,5 +33,5 @@ resource "linode_firewall" "firewall" {
   inbound_policy  = "DROP"
   outbound_policy = "ACCEPT"
 
-  linodes = linode_instance.instance1.*.id
+  linodes = linode_instance.instance_1.*.id
 }

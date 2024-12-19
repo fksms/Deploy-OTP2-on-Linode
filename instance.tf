@@ -1,11 +1,11 @@
 # Provides a Linode Instance resource
 
-resource "linode_instance" "instance1" {
+resource "linode_instance" "instance_1" {
   count           = var.node_count
   label           = "test-instance-${count.index + 1}"
-  region          = var.create_instance1.region
-  image           = var.create_instance1.image
-  type            = var.create_instance1.type
+  region          = var.create_instance_1.region
+  image           = var.create_instance_1.image
+  type            = var.create_instance_1.type
   authorized_keys = ["${chomp(file(var.public_ssh_key))}"]
 
   root_pass  = random_string.root_pass.result
@@ -16,5 +16,19 @@ resource "linode_instance" "instance1" {
     "username"  = var.username
     "password"  = var.password
     "publickey" = "${chomp(file(var.public_ssh_key))}"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      # https://github.com/docker/docker-install
+      "curl https://get.docker.com | sudo sh",
+      "sudo docker run hello-world"
+    ]
+    connection {
+      type        = "ssh"
+      private_key = file(var.private_ssh_key)
+      user        = var.username
+      host        = self.ip_address
+    }
   }
 }
