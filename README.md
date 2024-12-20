@@ -6,7 +6,7 @@
 各リソースへのアクセス権限については、`Events`、`Firewalls`、`Linodes`、`StackScripts`を`Read/Write`に設定し、それ以外は`No Access`に設定する。<br>
 
 また、OpenTripPlannerで利用するグラフはビルドに時間を要するため、あらかじめローカルでビルドを行い、ビルド済みのグラフをGoogle Driveに格納しておく。<br>
-ビルド方法は[こちら](https://github.com/fksms/TravelTimeAnalysisByOTP2)を参考。<br>
+ビルド方法は[こちら](https://github.com/fksms/Deploy-OTP2-on-Docker)を参考。<br>
 Google Drive格納後、共有設定で`リンクを知っている全員`に設定し、リンクの発行を行い、`download_assets.sh`の`fileId`に書き込んでください。<br>
 <br>
 

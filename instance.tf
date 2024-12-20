@@ -33,13 +33,13 @@ resource "linode_instance" "instance_1" {
       "sh /tmp/download_assets.sh",
 
       # Clone Repository
-      "git clone https://github.com/fksms/TravelTimeAnalysisByOTP2.git",
+      "git clone https://github.com/fksms/Deploy-OTP2-on-Docker.git",
 
       # Move Assets
-      "mv graph.obj TravelTimeAnalysisByOTP2/otp/",
+      "mv graph.obj Deploy-OTP2-on-Docker/otp/",
 
       # Change Directory
-      "cd TravelTimeAnalysisByOTP2",
+      "cd Deploy-OTP2-on-Docker",
 
       # Start OTP2
       "sudo docker compose -f load_graph.yml up -d",
