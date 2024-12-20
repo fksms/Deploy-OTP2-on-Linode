@@ -7,6 +7,16 @@ resource "linode_firewall" "firewall" {
     label    = "allow-http"
     action   = "ACCEPT"
     protocol = "TCP"
+    ports    = "8080"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
+
+  /*
+  inbound {
+    label    = "allow-http"
+    action   = "ACCEPT"
+    protocol = "TCP"
     ports    = "80"
     ipv4     = ["0.0.0.0/0"]
     ipv6     = ["::/0"]
@@ -29,6 +39,7 @@ resource "linode_firewall" "firewall" {
     ipv4     = ["0.0.0.0/0"]
     ipv6     = ["::/0"]
   }
+  */
 
   inbound_policy  = "DROP"
   outbound_policy = "ACCEPT"

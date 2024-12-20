@@ -1,7 +1,7 @@
 # Provides a Linode StackScript resource
 
-resource "linode_stackscript" "disable_root_script" {
-  label       = "disable_root_script"
+resource "linode_stackscript" "disable_root_login_script" {
+  label       = "disable_root_login_script"
   description = "Disable root login"
   script      = <<EOF
 #!/bin/bash

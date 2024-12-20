@@ -11,24 +11,45 @@ resource "linode_instance" "instance_1" {
   root_pass  = random_string.root_pass.result
   private_ip = true
 
-  stackscript_id = linode_stackscript.disable_root_script.id
+  stackscript_id = linode_stackscript.disable_root_login_script.id
   stackscript_data = {
     "username"  = var.username
     "password"  = var.password
     "publickey" = "${chomp(file(var.public_ssh_key))}"
   }
 
+  provisioner "file" {
+    source      = "download_assets.sh"
+    destination = "/tmp/download_assets.sh"
+  }
+
   provisioner "remote-exec" {
     inline = [
-      # https://github.com/docker/docker-install
+      # Install Docker
       "curl https://get.docker.com | sudo sh",
-      "sudo docker run hello-world"
+
+      # Download Assets
+      "chmod +x /tmp/download_assets.sh",
+      "sh /tmp/download_assets.sh",
+
+      # Clone Repository
+      "git clone https://github.com/fksms/TravelTimeAnalysisByOTP2.git",
+
+      # Move Assets
+      "mv graph.obj TravelTimeAnalysisByOTP2/otp/",
+
+      # Change Directory
+      "cd TravelTimeAnalysisByOTP2",
+
+      # Start OTP2
+      "sudo docker compose -f load_graph.yml up -d",
     ]
-    connection {
-      type        = "ssh"
-      private_key = file(var.private_ssh_key)
-      user        = var.username
-      host        = self.ip_address
-    }
+  }
+
+  connection {
+    type        = "ssh"
+    private_key = file(var.private_ssh_key)
+    user        = var.username
+    host        = self.ip_address
   }
 }

@@ -10,7 +10,7 @@ variable "create_instance_1" {
   default = {
     region = "ap-northeast" # Tokyo
     image  = "linode/ubuntu24.04"
-    type   = "g6-nanode-1"
+    type   = "g6-standard-2"
   }
 }
 
