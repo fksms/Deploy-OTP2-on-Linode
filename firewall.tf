@@ -4,34 +4,6 @@ resource "linode_firewall" "firewall" {
   label = "test-firewall"
 
   inbound {
-    label    = "allow-http"
-    action   = "ACCEPT"
-    protocol = "TCP"
-    ports    = "8080"
-    ipv4     = ["0.0.0.0/0"]
-    ipv6     = ["::/0"]
-  }
-
-  /*
-  inbound {
-    label    = "allow-http"
-    action   = "ACCEPT"
-    protocol = "TCP"
-    ports    = "80"
-    ipv4     = ["0.0.0.0/0"]
-    ipv6     = ["::/0"]
-  }
-
-  inbound {
-    label    = "allow-https"
-    action   = "ACCEPT"
-    protocol = "TCP"
-    ports    = "443"
-    ipv4     = ["0.0.0.0/0"]
-    ipv6     = ["::/0"]
-  }
-
-  inbound {
     label    = "allow-ssh"
     action   = "ACCEPT"
     protocol = "TCP"
@@ -39,7 +11,15 @@ resource "linode_firewall" "firewall" {
     ipv4     = ["0.0.0.0/0"]
     ipv6     = ["::/0"]
   }
-  */
+
+  inbound {
+    label    = "allow-http"
+    action   = "ACCEPT"
+    protocol = "TCP"
+    ports    = "5173"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
 
   inbound_policy  = "DROP"
   outbound_policy = "ACCEPT"

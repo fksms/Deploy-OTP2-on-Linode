@@ -41,8 +41,11 @@ resource "linode_instance" "instance_1" {
       # Change Directory
       "cd Deploy-OTP2-on-Docker",
 
-      # Start OTP2
-      "sudo docker compose -f load_graph.yml up -d",
+      # Build App
+      "sudo docker compose -f load_graph_and_deploy_middle.yml build",
+
+      # Start App
+      "sudo docker compose -f load_graph_and_deploy_middle.yml up -d",
     ]
   }
 

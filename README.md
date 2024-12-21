@@ -52,24 +52,9 @@ terraform destroy
 ```
 <br>
 
-### 3. APIの動作確認
-
-https://docs.opentripplanner.org/en/dev-2.x/sandbox/TravelTime/
-
-上記を参考<br>
-このAPIはVer2.6で無効になり、上記リンクも削除されてしまう可能性があるため、APIのパラメータを以下に示す。<br>
-
-#### API parameters
-
-- `location` Origin of the search, can be either `latitude,longitude` or a stop id
-- `time` Departure time as a ISO-8601 time and date (example `2023-04-24T15:40:12+02:00`). The default value is the current time.
-- `cutoff` The maximum travel duration as a ISO-8601 duration. The `PT` can be dropped to simplify the value. This parameter can be given multiple times to include multiple isochrones in a single request. The default value is one hour.
-- `modes` A list of travel modes. WALK is not implemented, use `WALK, TRANSIT` instead.
-- `arriveBy` Set to `false` when searching from the location and `true` when searching to the location
-
-#### Example Request
+### 3. 動作確認
 
 IPアドレスは[こちら](https://cloud.linode.com/linodes)で確認できる。
 ```
-http://xxx.xxx.xxx.xxx:8080/otp/traveltime/isochrone?batch=true&location=35.63273135483024,139.74189548323065&time=2024-12-03T14:00:00%2B09:00&modes=WALK,TRANSIT&arriveBy=true&cutoff=30M&cutoff=60M
+http://xxx.xxx.xxx.xxx:5173
 ```
