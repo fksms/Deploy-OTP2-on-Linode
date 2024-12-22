@@ -42,10 +42,10 @@ resource "linode_instance" "instance_1" {
       "cd Deploy-OTP2-on-Docker",
 
       # Build App
-      "sudo docker compose -f load_graph_and_deploy_middle.yml build",
+      "sudo docker compose -f deploy_all.yml build",
 
       # Start App
-      "sudo docker compose -f load_graph_and_deploy_middle.yml up -d",
+      "sudo docker compose -f deploy_all.yml up -d",
     ]
   }
 

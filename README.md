@@ -1,6 +1,6 @@
 ## 利用方法
 
-### 0. はじめに
+### はじめに
 
 [こちら](https://cloud.linode.com/profile/tokens)からAccess Tokenの取得を行う。<br>
 各リソースへのアクセス権限については、`Events`、`Firewalls`、`Linodes`、`StackScripts`を`Read/Write`に設定し、それ以外は`No Access`に設定する。<br>
@@ -10,7 +10,7 @@
 Google Drive格納後、共有設定で`リンクを知っている全員`に設定し、リンクの発行を行い、`download_assets.sh`の`fileId`に書き込んでください。<br>
 <br>
 
-### 1. 環境構築
+### 環境構築
 
 Terraformのインストール
 ```sh
@@ -19,7 +19,7 @@ brew install hashicorp/tap/terraform
 ```
 <br>
 
-### 2. デプロイ
+### デプロイ
 
 tfvarsファイルのコピー （取得したAccess Tokenを`terraform.tfvars`に書き込んでください）
 ```sh
@@ -51,10 +51,3 @@ terraform apply
 terraform destroy
 ```
 <br>
-
-### 3. 動作確認
-
-IPアドレスは[こちら](https://cloud.linode.com/linodes)で確認できる。
-```
-http://xxx.xxx.xxx.xxx:5173
-```

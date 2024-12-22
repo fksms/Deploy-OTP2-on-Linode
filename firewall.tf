@@ -13,10 +13,19 @@ resource "linode_firewall" "firewall" {
   }
 
   inbound {
-    label    = "allow-http"
+    label    = "allow-web-http"
     action   = "ACCEPT"
     protocol = "TCP"
     ports    = "5173"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
+
+  inbound {
+    label    = "allow-app-http"
+    action   = "ACCEPT"
+    protocol = "TCP"
+    ports    = "8000"
     ipv4     = ["0.0.0.0/0"]
     ipv6     = ["::/0"]
   }
